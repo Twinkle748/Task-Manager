@@ -1,0 +1,346 @@
+html {
+  background-color: #e4e9fd;
+  background-image: url("image.png");
+  background-size: cover;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 1000px;
+  font-family: "helvetica neue";
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  min-height: 95vh;
+}
+.boxx {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 80px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+/* Individual Task Box Styling */
+.prev, .curr {
+  background-color: #a275d6;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  min-width: 220px;
+  max-width: 280px;
+  width: 100%;
+  text-align: center;
+  flex: 1 1 250px;
+}
+
+.prev:hover, .curr:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+}
+
+.tt {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  display: block;
+}
+.completed-tasks-container {
+  max-width: 800px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 15px;
+}
+
+.completed-task-box {
+  background-color: #f3f3f3;
+  border-left: 6px solid #4caf50;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.completed-task-box:hover {
+  transform: scale(1.01);
+}
+
+.task-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.task-title {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #2e2e2e;
+}
+.progress-container {
+  margin: 30px auto 10px;
+  text-align: center;
+  width: 80%;
+  max-width: 500px;
+}
+
+.progress-label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #775dac;
+}
+
+.progress-bar {
+  background-color: #ddd;
+  border-radius: 20px;
+  height: 20px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.progress-fill {
+  width: var(--progress);
+  background-color: #a275d6;
+  height: 20px;
+}
+
+
+.date {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.no-tasks {
+  text-align: center;
+  color: #999;
+  font-size: 1.1rem;
+}
+
+main {
+  text-align: center;
+  flex: 1 0 auto;
+}
+h1 {
+  color: #fff;
+  padding: 10px;
+}
+
+.box {
+  max-width: 400px;
+  margin: 50px auto;
+
+  background: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+#heading {
+  background-color: #a683e3;
+  text-align: center;
+}
+form.edit {
+  display: flex;
+}
+
+.item {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f1f1f1;
+  padding: 0px 15px;
+  position: relative;
+}
+.item-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: coloumn;
+  margin-left: 10px;
+  overflow: hidden;
+ 
+ 
+}
+.task-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
+  padding-right: 40px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.task-row::-webkit-scrollbar {
+  display: none;
+}
+
+.task-title {
+  white-space: nowrap;
+  overflow-x: hidden;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #00204a;
+  max-width: 100%;
+  padding-bottom: 4px;
+  transition: all 0.2s ease;
+}
+
+.task-title:hover {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+/* WebKit scrollbars (Chrome, Edge, Safari) */
+.task-title:hover::-webkit-scrollbar {
+  height: 4px;
+}
+
+.task-title:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(166, 131, 227, 0.5);
+  border-radius: 4px;
+}
+
+.edit-icon {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.edit-icon .icon {
+  height: 18px;
+}
+
+input[type="checkbox"] {
+  margin: 20px;
+  margin-left: 0;
+}
+
+p {
+  margin: 0;
+  padding: 20px 0;
+  font-size: 20px;
+  color: #00204a;
+}
+
+form {
+  text-align: center;
+  margin-left: 20px;
+}
+/* New item form styling */
+.new-item-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 20px;
+  border-top: 1px solid #f1f1f1;
+  flex-wrap: wrap; /* For responsiveness */
+}
+
+.new-title, .new-date {
+  flex: 1;
+  min-width: 120px;
+  padding: 10px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.new-title::placeholder {
+  color: lightgray;
+}
+
+.add {
+  min-height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: none;
+  
+  background-color: #a683e3;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#nx{
+  /* margin-top: 5px; */
+  margin-left: 180px;
+  
+  
+ 
+  
+}
+.add-trigger{
+  height: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+
+
+input[type="text"] {
+  text-align: left;
+  height: 60px;
+  top: 10px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  font-weight: 200;
+  width: 80%;
+}
+.due-status {
+ 
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  white-space: nowrap;
+  text-align: center;
+  border-radius: 12px;
+  
+}
+
+.overdue {
+  color: #b71c1c;
+  background-color:#f8d7da;
+  
+}
+
+.due-today {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.upcoming {
+  background-color: #d4edda;
+  color: #1b5e20;
+}
+ .add:hover {
+  background-color: #8d6cd3;
+}
+
+
+
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: inset 0 -3px 0 0 #a683e3;
+}
+
+::placeholder {
+  color: lightgray;
+  opacity: 1;
+}
+
+footer {
+  flex: 0 0 auto;
+  color: rgb(142, 129, 192);
+  text-align: center;
+}

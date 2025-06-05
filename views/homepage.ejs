@@ -1,0 +1,30 @@
+<%- include("partials/header") %>
+
+<main>
+  <div class="box" id="heading">
+    <h1>Hey! I am your Task Manager</h1>
+  </div>
+
+  <div class="boxx" id="jj">
+    <div class="prev">
+      <a class="tt" href="/complete">Completed Task</a>
+    </div>
+    <div class="curr">
+      <a class="tt" href="/tasks">Let’s Get Things Done</a>
+    </div>
+  </div>
+    <!-- Progress bar section -->
+  <!-- Progress bar section -->
+<div class="progress-container">
+  <div class="progress-label">Task Completion: <%= progress %>%</div>
+  <div class="progress-bar">
+   <div class="progress-fill" style="--progress: <%= progress %>%;"></div>
+
+
+  </div>
+</div>
+
+
+</main>
+
+<%- include("partials/footer") %>

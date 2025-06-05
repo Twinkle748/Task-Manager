@@ -1,0 +1,28 @@
+<%- include("partials/header") %>
+
+<main>
+  <div class="box" id="heading">
+    <h1>Completed Tasks</h1>
+  </div>
+
+  <div class="completed-tasks-container">
+    <% if (listItems.length === 0) { %>
+      <p class="no-tasks">No tasks completed yet.</p>
+    <% } else { %>
+      <% listItems.forEach(task => { %>
+        <div class="completed-task-box">
+          <div class="task-info">
+            <h3 class="task-title"><%= task.title %></h3>
+            <p class="date">
+  <strong>Completed on:</strong>
+  <%= task.completed_at ? new Date(task.completed_at).toLocaleString() : 'Unknown' %>
+</p>
+
+          </div>
+        </div>
+      <% }); %>
+    <% } %>
+  </div>
+</main>
+
+<%- include("partials/footer") %>

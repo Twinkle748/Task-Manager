@@ -1,0 +1,71 @@
+<%- include('partials/header.ejs'); -%>
+
+<div class="box" id="heading">
+  <h1>TO-DO LIST</h1>
+</div>
+
+<div class="box">
+  <% for (let item of listItems) { %>
+    <div class="item">
+      <!-- Delete checkbox -->
+      <form action="/complete" method="post">
+        <input type="checkbox" onchange="this.form.submit()" name="completeItemId" value="<%= item.id %>">
+      </form>
+
+      <!-- Task Title and Due Status -->
+      <div class="item-content">
+        
+        <div id="title<%= item.id %>" class="task-row">
+  <div class="task-title" title="<%= item.title %>"><%= item.title %></div>
+  <span class="due-status <%= item.dueStatus === 'Overdue' ? 'overdue' : item.dueStatus === 'Due Today' ? 'due-today' : 'upcoming' %>">
+    <%= item.dueStatus %>
+  </span>
+</div>
+
+
+        <!-- Edit form (input + done icon) -->
+        <form class="edit" action="/edit" method="post">
+          <input type="hidden" name="updatedItemId" value="<%= item.id %>">
+          <input id="input<%= item.id %>" type="text" name="updatedItemTitle" value="<%= item.title %>" autocomplete="off"
+            autofocus="true" hidden />
+          <button id="done<%= item.id %>" class="edit" type="submit" hidden>
+            <img class="icon" src="/assets/icons/check-solid.svg" alt="tick image">
+          </button>
+        </form>
+      </div>
+
+      <!-- Edit icon fixed to right -->
+      <div class="edit-icon-container">
+        <button id="edit<%= item.id %>" class="edit-icon" onclick="handler('<%= item.id %>')">
+          <img class="icon" src="/assets/icons/pencil-solid.svg" alt="pencil image">
+        </button>
+      </div>
+    </div>
+  <% } %>
+
+  <!-- Add new item form -->
+   <div id="add-trigger" class="add-trigger">
+  <button class="add" id = "nx" type="button" onclick="showAddForm()">+</button>
+</div>
+  <form id="add-form" class="item new-item-form" action="/add" method="post" style="display: none;">
+  <input class="new-title" type="text" name="newItem" placeholder="New Item" autocomplete="off" required />
+  <input class="new-date" type="date" name="dueDate" placeholder="dd-mm-yyyy" required />
+  <button class="add" type="submit" name="list" value="<%= listTitle %>">+</button>
+</form>
+
+</div>
+
+<script>
+  function handler(id) {
+    document.getElementById("title" + id).setAttribute("hidden", true);
+    document.getElementById("edit" + id).setAttribute("hidden", true);
+    document.getElementById("done" + id).removeAttribute("hidden");
+    document.getElementById("input" + id).removeAttribute("hidden");
+  }
+  function showAddForm() {
+    document.getElementById("add-trigger").style.display = "none";
+    document.getElementById("add-form").style.display = "flex";
+  }
+</script>
+
+<%- include('partials/footer.ejs'); -%>
