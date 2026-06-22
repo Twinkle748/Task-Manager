@@ -7,6 +7,7 @@ import pg from "pg";
 const app = express();
 const port = 3000;
 
+
 // PostgreSQL Setup
 const db = new pg.Client({
   user: "postgres",
@@ -63,6 +64,8 @@ app.get("/", async (req, res) => {
 //   }
 // });
 
+
+
 app.get("/tasks", async (req, res) => {
   try {
     const result = await db.query("SELECT * FROM items WHERE status != 'completed' ORDER BY created_at DESC");
@@ -103,6 +106,8 @@ app.get("/tasks", async (req, res) => {
     console.error(err);
   }
 });
+
+
 app.get("/complete", async (req, res) => {
   try {
     const result = await db.query("SELECT * FROM items WHERE status = 'completed' order by created_at DESC");
